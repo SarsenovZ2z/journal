@@ -18,6 +18,8 @@ class User extends Model implements UserEntity, AuthorizableContract, Authentica
     use Authenticatable, Authorizable, HasApiTokens;
     use HasFactory, Notifiable;
 
+    protected $rememberTokenName = null;
+
     /**
      * The attributes that are mass assignable.
      *
