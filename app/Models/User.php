@@ -18,8 +18,6 @@ class User extends Model implements UserEntity, AuthorizableContract, Authentica
     use Authenticatable, Authorizable, HasApiTokens;
     use HasFactory, Notifiable;
 
-    protected $rememberTokenName = null;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -28,6 +26,15 @@ class User extends Model implements UserEntity, AuthorizableContract, Authentica
     protected $fillable = [
         'name',
         'email',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'remember_token',
     ];
 
     public function books()

@@ -13,7 +13,7 @@ class GetVerificationCodeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class GetVerificationCodeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email' => 'required', // TODO: add email validation
         ];
     }
 }

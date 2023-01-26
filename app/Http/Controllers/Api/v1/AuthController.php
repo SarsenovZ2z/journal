@@ -21,6 +21,6 @@ class AuthController extends Controller
         CheckVerificationCodeRequest $request,
         AuthRepository $authRepository,
     ) {
-        return $authRepository->checkTemporaryVerificationCode($request->email, $request->code);
+        return $authRepository->checkTemporaryVerificationCode($request->email, $request->password);
     }
 }

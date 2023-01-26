@@ -43,7 +43,7 @@ class AuthRepository implements AuthRepositoryContract
             $user = $this->userDatasource->findOrCreateByEmail($email);
             return [
                 'success' => true,
-                'token' => $user->createToken('AuthToken')->plainTextToken,
+                'access_token' => $user->createToken('AuthToken')->plainTextToken,
             ];
         }
 
