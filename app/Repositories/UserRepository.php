@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Contracts\Repositories\UserRepository as UserRepositoryContract;
 use App\Contracts\Datasources\UserDatasource;
-use App\Contracts\Entities\UserEntity;
 use Illuminate\Http\Request;
 
 class UserRepository implements UserRepositoryContract

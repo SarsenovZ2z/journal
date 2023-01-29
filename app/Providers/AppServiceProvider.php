@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
         \App\Contracts\Datasources\UserDatasource::class => \App\Datasources\Eloquent\UserEloquentDatasource::class,
 
         \App\Contracts\Repositories\UserRepository::class => \App\Repositories\UserRepository::class,
-        \App\Contracts\Repositories\AuthRepository::class => \App\Repositories\AuthRepository::class,
+        \App\Modules\Auth\Repositories\AuthRepository::class => \App\Repositories\AuthRepository::class,
 
     ];
 

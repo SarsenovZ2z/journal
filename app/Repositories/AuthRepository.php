@@ -2,9 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Contracts\Repositories\AuthRepository as AuthRepositoryContract;
+use App\Modules\Auth\Repositories\AuthRepository as AuthRepositoryContract;
 use App\Contracts\Datasources\UserDatasource;
+use App\Modules\Auth\AuthToken;
 use App\Modules\Verification\Verification;
+use Illuminate\Support\Facades\Log;
 
 class AuthRepository implements AuthRepositoryContract
 {
@@ -18,38 +20,32 @@ class AuthRepository implements AuthRepositoryContract
     /**
      * @param string $email
      * 
-     * @return array
+     * @return string
      */
-    public function sendTemporaryVerificationCode(string $email): array
+    public function sendTemporaryPassword(string $email): string
     {
         $code = Verification::start($email, 6, 10, 300);
 
-        return [
-            'success' => true,
-            'tries' => Verification::getTries($email),
-            ...(config('app.env') == 'local' ? ['code' => $code] : []),
-        ];
+        Log::info("$email verification code is $code");
+        // TODO: send to email
+
+        return (string)$code;
     }
 
     /**
      * @param string $email
      * @param string $code
      * 
-     * @return array
+     * @return AuthToken
      */
-    public function checkTemporaryVerificationCode(string $email, string $code): array
+    public function authenticateByTemporaryPassword(string $email, string $code):? AuthToken
     {
-        if (Verification::check($email, $code)) {
-            $user = $this->userDatasource->findOrCreateByEmail($email);
-            return [
-                'success' => true,
-                'access_token' => $user->createToken('AuthToken')->plainTextToken,
-            ];
+        if (!Verification::check($email, $code)) {
+            return null;
         }
 
-        return [
-            'success' => false,
-            'tries' => Verification::getTries($email),
-        ];
+        $user = $this->userDatasource->findOrCreateByEmail($email);
+
+        return new AuthToken($user->createToken('AuthToken')->plainTextToken);
     }
 }

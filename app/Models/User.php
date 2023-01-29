@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Contracts\Entities\User as UserEntity;
+use App\Modules\Auth\Entities\Authenticatable as AuthenticatableUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Book;
 
-class User extends Model implements UserEntity, AuthorizableContract, AuthenticatableContract
+class User extends Model implements AuthenticatableUser, AuthorizableContract, AuthenticatableContract
 {
     use Authenticatable, Authorizable, HasApiTokens;
     use HasFactory, Notifiable;
