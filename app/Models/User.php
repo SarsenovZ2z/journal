@@ -12,28 +12,21 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Book;
+use App\Modules\Book\Entities\BookOwner;
+use App\Contracts\Entities\User as UserContract;
 
-class User extends Model implements AuthenticatableUser, AuthorizableContract, AuthenticatableContract
+class User extends Model implements AuthenticatableUser, AuthorizableContract, AuthenticatableContract, BookOwner, UserContract
 {
     use Authenticatable, Authorizable, HasApiTokens;
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
+        'password',
         'remember_token',
     ];
 
@@ -41,5 +34,4 @@ class User extends Model implements AuthenticatableUser, AuthorizableContract, A
     {
         return $this->hasMany(Book::class);
     }
-
 }

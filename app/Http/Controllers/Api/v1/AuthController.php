@@ -43,4 +43,9 @@ class AuthController extends Controller
             'refresh_token' => $authToken->refresh_token,
         ];
     }
+
+    public function checkToken()
+    {
+        return 'ok';
+    }
 }

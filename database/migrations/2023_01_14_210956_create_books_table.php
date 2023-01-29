@@ -23,6 +23,7 @@ return new class extends Migration
                 ->onDelete('cascade');
 
             $table->text('name');
+            $table->string('password');
 
             $table->timestamps();
         });
