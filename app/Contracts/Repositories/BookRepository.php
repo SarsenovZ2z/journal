@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Book\Repositories;
+namespace App\Contracts\Repositories;
 
-use App\Modules\Book\Entities\BookOwner;
+use App\Contracts\Entities\BookOwner;
 
 interface BookRepository
 {

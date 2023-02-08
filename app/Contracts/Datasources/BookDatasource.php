@@ -2,7 +2,7 @@
 
 namespace App\Contracts\Datasources;
 
-use App\Modules\Book\Entities\BookOwner;
+use App\Contracts\Entities\BookOwner;
 
 interface BookDatasource extends Datasource
 {

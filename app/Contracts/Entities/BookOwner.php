@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Book\Entities;
+namespace App\Contracts\Entities;
 
 interface BookOwner
 {

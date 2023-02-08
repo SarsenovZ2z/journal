@@ -3,7 +3,7 @@
 namespace App\Datasources\Eloquent;
 
 use App\Contracts\Datasources\BookDatasource as BookDatasourceContract;
-use App\Modules\Book\Entities\BookOwner;
+use App\Contracts\Entities\BookOwner;
 
 class BookDatasource extends EloquentDatasource implements BookDatasourceContract
 {

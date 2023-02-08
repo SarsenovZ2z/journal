@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Book\UseCases;
+namespace App\UseCases;
 
 use App\Core\UseCase;
-use App\Modules\Book\Entities\BookOwner;
-use App\Modules\Book\Repositories\BookRepository;
+use App\Contracts\Entities\BookOwner;
+use App\Contracts\Repositories\BookRepository;
 
 class GetOwnersBooks extends UseCase
 {
@@ -23,5 +23,4 @@ class GetOwnersBooks extends UseCase
     {
         return $this->bookRepository->getOwnersBooks($owner);
     }
-
 }
