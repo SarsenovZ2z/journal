@@ -14,6 +14,7 @@ class Book extends Model
 
     protected $fillable = [
         'user_id',
+        'image_id',
         'name',
     ];
 
@@ -21,9 +22,18 @@ class Book extends Model
         'password',
     ];
 
+    protected $with = [
+        'image',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
     }
 
     public function chapters()

@@ -21,6 +21,12 @@ return new class extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+            
+            $table->unsignedBigInteger('image_id')->nullable();
+            $table->foreign('image_id')
+                ->references('id')
+                ->on('images')
+                ->onDelete('set null');
 
             $table->text('name');
             $table->string('password');

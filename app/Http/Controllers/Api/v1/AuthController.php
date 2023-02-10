@@ -33,7 +33,7 @@ class AuthController extends Controller
     ) {
 
         $authToken = $authenticateByTemporaryPassword(email: $request->email, code: $request->password);
-        
+
         if (!$authToken) {
             return abort(400, 'Invalid credentials');
         }
