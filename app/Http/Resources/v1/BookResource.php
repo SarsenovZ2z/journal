@@ -4,6 +4,8 @@ namespace App\Http\Resources\v1;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+use Illuminate\Support\Facades\Storage;
+
 class BookResource extends JsonResource
 {
     /**
@@ -17,7 +19,7 @@ class BookResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'image' => $this->image->url ?? null,
+            'image' => $this->image->url ?? Storage::disk('public')->url('images/placeholder.png'),
         ];
     }
 }
