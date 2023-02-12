@@ -14,6 +14,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Book;
 use App\Contracts\Entities\BookOwner;
 use App\Contracts\Entities\User as UserContract;
+use Laravel\Sanctum\NewAccessToken;
 
 class User extends Model implements AuthenticatableUser, AuthorizableContract, AuthenticatableContract, BookOwner, UserContract
 {
@@ -33,5 +34,10 @@ class User extends Model implements AuthenticatableUser, AuthorizableContract, A
     public function books()
     {
         return $this->hasMany(Book::class);
+    }
+
+    public function createAuthToken(string $name): NewAccessToken
+    {
+        return $this->createToken($name);
     }
 }

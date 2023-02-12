@@ -7,5 +7,5 @@ use Laravel\Sanctum\NewAccessToken;
 interface User
 {
 
-    public function createToken(string $name): NewAccessToken;
+    public function createAuthToken(string $name): NewAccessToken;
 }
