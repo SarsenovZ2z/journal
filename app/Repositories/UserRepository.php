@@ -12,7 +12,6 @@ class UserRepository implements UserRepositoryContract
     public function __construct(
         protected UserDatasource $userDatasource,
     ) {
-        $this->userDatasource = $userDatasource;
     }
 
     public function getUserFromRequest(Request $request)
@@ -20,6 +19,4 @@ class UserRepository implements UserRepositoryContract
         // return $this->userDatasource
         //     ->castToEntity(\App\Models\User::factory()->make());
     }
-
-
 }

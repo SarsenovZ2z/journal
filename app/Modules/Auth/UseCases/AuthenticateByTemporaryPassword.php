@@ -8,11 +8,9 @@ use App\Modules\Auth\Repositories\AuthRepository;
 class AuthenticateByTemporaryPassword extends UseCase
 {
 
-    protected AuthRepository $authRepository;
-
-    public function __construct(AuthRepository $authRepository)
-    {
-        $this->authRepository = $authRepository;
+    public function __construct(
+        protected AuthRepository $authRepository,
+    ) {
     }
 
     public function __invoke(string $email, string $code)

@@ -9,11 +9,9 @@ use App\Contracts\Repositories\BookRepository;
 class GetOwnersBooks extends UseCase
 {
 
-    protected BookRepository $bookRepository;
-
-    public function __construct(BookRepository $bookRepository)
-    {
-        $this->bookRepository = $bookRepository;
+    public function __construct(
+        protected BookRepository $bookRepository,
+    ) {
     }
 
     /**

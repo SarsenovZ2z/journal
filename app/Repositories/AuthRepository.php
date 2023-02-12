@@ -14,7 +14,6 @@ class AuthRepository implements AuthRepositoryContract
     public function __construct(
         protected UserDatasource $userDatasource,
     ) {
-        $this->userDatasource = $userDatasource;
     }
 
     /**
@@ -38,7 +37,7 @@ class AuthRepository implements AuthRepositoryContract
      * 
      * @return AuthToken
      */
-    public function authenticateByTemporaryPassword(string $email, string $code):? AuthToken
+    public function authenticateByTemporaryPassword(string $email, string $code): ?AuthToken
     {
         if (!Verification::check($email, $code)) {
             return null;

@@ -9,15 +9,18 @@ use App\Contracts\Repositories\BookRepository as BookRepositoryContract;
 class BookRepository implements BookRepositoryContract
 {
 
-    protected BookDatasource $bookDatasource;
-
-    public function __construct(BookDatasource $bookDatasource)
-    {
-        $this->bookDatasource = $bookDatasource;
+    public function __construct(
+        protected BookDatasource $bookDatasource,
+    ) {
     }
 
     public function getOwnersBooks(BookOwner $owner)
     {
         return $this->bookDatasource->getOwnersBooks($owner);
+    }
+
+    public function getBookById(int $id)
+    {
+        return $this->bookDatasource->getBookById($id);
     }
 }

@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Contracts\Entities\Book as BookEntity;
 
 use App\Models\User;
 use App\Models\Chapter;
 
-class Book extends Model
+class Book extends Model implements BookEntity
 {
     use HasFactory;
 

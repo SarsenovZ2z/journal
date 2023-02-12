@@ -9,4 +9,6 @@ interface BookRepository
 
     public function getOwnersBooks(BookOwner $owner);
 
+    public function getBookById(int $id);
+
 }
