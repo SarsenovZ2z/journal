@@ -27,10 +27,12 @@ class BookDatasource extends EloquentDatasource implements BookDatasourceContrac
 
     public function createBook(BookOwner $owner, string $name, string $password): Book
     {
-        return $owner->books()
+        $book = $owner->books()
             ->create([
                 'name' => $name,
-                'password' => Hash::make($password),
             ]);
+
+        $book->password = Hash::make($password);
+        return $book;
     }
 }

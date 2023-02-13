@@ -29,7 +29,7 @@ return new class extends Migration
                 ->onDelete('set null');
 
             $table->text('name');
-            $table->string('password');
+            $table->string('password')->nullable();
 
             $table->timestamps();
         });
