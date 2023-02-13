@@ -18,7 +18,7 @@ class BookPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return false;
     }
 
     /**
@@ -41,7 +41,7 @@ class BookPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**

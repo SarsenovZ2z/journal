@@ -8,8 +8,8 @@ Route::group([
         'auth:sanctum',
     ],
 ], function () {
+    Route::post('', 'BookController@createBook');
     Route::get('my', 'BookController@getCurrentUserBooks');
     Route::get('{id}', 'BookController@getBookById')
-        ->where('id', '[0-9]+')
-        ->middleware('can:view,book');
+        ->where('id', '[0-9]+');
 });
