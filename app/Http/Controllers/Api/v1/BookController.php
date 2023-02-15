@@ -23,7 +23,7 @@ class BookController extends Controller
     public function getBookById(Request $request, GetBookById $getBookById)
     {
         $book = $getBookById($request->id);
-        $this->authorize('delete', $book);
+        $this->authorize('view', $book);
 
         return BookResource::make($book);
     }
